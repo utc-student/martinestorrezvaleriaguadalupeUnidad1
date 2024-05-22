@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['id_user'])) {
+if (!isset($_SESSION['id_client'])) {
     header('Location: login.php');
     exit();
 }
@@ -73,6 +73,7 @@ if (!isset($_SESSION['id_user'])) {
 			<div class="container">
 				<!-- row -->
 				<div class="row">
+					<h1><?php echo $_SESSION['id_client']; ?></h1>
 				</div>
 				<!-- /row -->
 			</div>

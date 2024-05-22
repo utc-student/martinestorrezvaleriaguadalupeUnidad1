@@ -1,43 +1,22 @@
 
 <?php 
+require_once "./php/classes/Client.php";
 session_start();
 
 
 if (isset($_POST['login'])) {
-    require 'bd_conexion.php';
 
     $email=$_POST['email'];
     $password=$_POST['password'];
 
+    $cliente = new Client();
 
-    $query=$cnnPDO->prepare('SELECT * from clientes WHERE email=:email and password=:password');
-
-    $query->bindParam(':email',$email);
-    $query->bindParam(':password',$password);
-
-
-    $query->execute();
-
-    $count=$query->rowCount();
-    $campo = $query->fetch();
-    
-    if ($count) 
-    {
-    $_SESSION['nombre'] = $campo['nombre'];
-    $_SESSION['apellidos'] = $campo['apellidos'];
-    $_SESSION['email'] = $campo['email'];  
-    $_SESSION ['password'] =$campo['password'];
-    $_SESSION['rfc'] = $campo['rfc'];  
-    $_SESSION ['direccion'] =$campo['direccion'];
-
-
-    header("location:inicio.php");
-        
-    }
-    
-        
+    if ($cliente->clientExists($email, $password)) {
+        $_SESSION['id_client'] = 1;
+        $cliente = null;
+        header("Location:myAccount.php");
+    }     
 }
-ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html lang="en">
