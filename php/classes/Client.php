@@ -50,8 +50,34 @@ class Client {
      * @param string $pNumberClient Email Client.
      * @return bool Return true if the Client exist, false if doesn't exist.
      */
-    public function createClient() {
-        
+    public function createClient($fNameClient, $lNameClient, $emailClient, $passwordClient, $pNumberClient) {
+        try {
+            $con = new Conexion();
+            $query = $con->prepare("INSERT INTO Client (firstName, lastName, email, password ". ($pNumberClient !== null && $pNumberClient != "" ? ", phoneNumber" : '') .")
+            VALUES (:FNAME, :LNAME, :EMAIL, :PSW ". ($pNumberClient !== null && $pNumberClient != "" ? ", :PNUMBER" : '') .")");
+            
+            $query->bindParam(':FNAME',$emailClient);
+            $query->bindParam(':LNAME',$emailClient);
+            $query->bindParam(':EMAIL',$emailClient);
+            $query->bindParam(':PSW',$passwordClient);
+
+            // Vincular el parámetro :PNUMBER solo si $pNumberClient no es nulo ni vacío
+            if ($pNumberClient !== null && $pNumberClient != "") {
+                $query->bindParam(':PNUMBER', $pNumberClient);
+            }
+
+            $query->execute();
+            // Verificar si la inserción se realizó correctamente
+            if ($query->rowCount() > 0) {
+                return "Fila creada"; // La fila se insertó correctamente
+            } else {
+                return "Fila no creada"; // No se insertó ninguna fila
+            } 
+        } catch (PDOException $e) {
+            echo "Error de conexión a la base de datos: " . $e->getMessage();
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
 
     /**
@@ -63,7 +89,9 @@ class Client {
     }
 }
 
-/* $cliente = new Client();
-$bool = $cliente->clientExists("dawnspencer9@yahoo.com", "6QvH7gpFZB");
+//$cliente = new Client();
+/* $bool = $cliente->clientExists("dawnspencer9@yahoo.com", "6QvH7gpFZB");
 echo "Existe el usuario: " . $bool;  */
+
+//echo $cliente->createClient("Alonso", "Valles", "briansitovalles@gmail.com", "123456oso", "8443706637");
 ?>
