@@ -5,7 +5,7 @@
 		private $db_type='mysql';
 		private $host='localhost';
         private $port=3333;
-		private $database_name='db_store';
+		private $database_name='db-electro';
 
 		private $user='root';
 		private $password='';
@@ -24,4 +24,17 @@
 			}
 		}
 	}
+
+	/* $con = new Conexion();
+	$stmt = $con->query("SHOW TABLES");
+            $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+            if ($tables) {
+                echo "Tablas en la base de datos :<br>";
+                foreach ($tables as $table) {
+                    echo $table . "<br>";
+                }
+            } else {
+                echo "No se encontraron tablas en la base de datos.";
+            } */
 ?>

@@ -1,3 +1,8 @@
+<?php 
+	require_once "./php/classes/ShowProduct.php"; 
+	$producto = new ShowProduct();
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -255,16 +260,12 @@
 					<!-- Product details -->
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name">product name goes here</h2>
+							<h2 class="product-name"><?php echo $producto->getNameProduct(); ?></h2>
 							<div>
 								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
+									<?php echo $producto->getRatingProduct(); ?>
 								</div>
-								<a class="review-link" href="#">10 Review(s) | Add your review</a>
+								<a class="review-link" href="#section_reviews" ><?php echo $producto->getNumReviews(); ?> Review(s) | Add your review</a>
 							</div>
 							<div>
 								<h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
@@ -329,7 +330,7 @@
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
 								<li><a data-toggle="tab" href="#tab2">Details</a></li>
-								<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+								<li><a data-toggle="tab" href="#tab3" id="section_reviews">Reviews (3)</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
