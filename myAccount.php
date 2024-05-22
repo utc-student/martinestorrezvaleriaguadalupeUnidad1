@@ -1,7 +1,8 @@
 <?php
+require_once "./php/classes/Client.php";
 session_start();
 
-if (!isset($_SESSION['id_client'])) {
+if (!isset($_SESSION['ins_client'])) {
     header('Location: login.php');
     exit();
 }
@@ -73,7 +74,7 @@ if (!isset($_SESSION['id_client'])) {
 			<div class="container">
 				<!-- row -->
 				<div class="row">
-					<h1><?php echo $_SESSION['id_client']; ?></h1>
+					<h1><?php echo $_SESSION['ins_client']->getFirstNameClient(); ?></h1>
 				</div>
 				<!-- /row -->
 			</div>

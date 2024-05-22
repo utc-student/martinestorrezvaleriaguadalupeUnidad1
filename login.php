@@ -6,16 +6,21 @@ session_start();
 
 if (isset($_POST['login'])) {
 
-    $email=$_POST['email'];
-    $password=$_POST['password'];
+    try {
+        $email=$_POST['email'];
+        $password=$_POST['password'];
 
-    $cliente = new Client();
+        $cliente = new Client();
 
-    if ($cliente->clientExists($email, $password)) {
-        $_SESSION['id_client'] = 1;
-        $cliente = null;
-        header("Location:myAccount.php");
-    }     
+        if ($cliente->clientExists($email, $password)) {
+            $_SESSION['ins_client'] = $cliente;
+            header("Location:myAccount.php");
+        } else {
+            echo "Error";
+        }
+    } catch (\Throwable $th) {
+        echo $th;
+    }    
 }
 ?>
 <!DOCTYPE html>

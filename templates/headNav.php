@@ -11,7 +11,7 @@
 					<ul class="header-links pull-right">
 						<li><a href="./myAccount.php"><i class="fa fa-user-o"></i>My Account</a></li>
 						<!-- Se verifica si hay una sesion iniciada y asi poder mostrar el boton de logout -->
-						<?php echo isset($_SESSION['id_client']) ? '<li><a href="./logout.php"><i class="fa fa-sign-out"></i>Log Out</a></li>' : ''; ?>
+						<?php echo isset($_SESSION['ins_client']) ? '<li><a href="./logout.php"><i class="fa fa-sign-out"></i>Log Out</a></li>' : ''; ?>
 					</ul>
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 									</a>
 									<div class="cart-dropdown">
 										<div class="cart-list">
-										<?php if (isset($_SESSION['id_client'])) {
+										<?php if (isset($_SESSION['ins_client'])) {
 											echo '
 											<div class="product-widget">
 												<div class="product-img">
