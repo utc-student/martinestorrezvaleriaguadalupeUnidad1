@@ -10,6 +10,8 @@
 					</ul>
 					<ul class="header-links pull-right">
 						<li><a href="./myAccount.php"><i class="fa fa-user-o"></i>My Account</a></li>
+						<!-- Se verifica si hay una sesion iniciada y asi poder mostrar el boton de logout -->
+						<?php echo isset($_SESSION['id_client']) ? '<li><a href="./logout.php"><i class="fa fa-sign-out"></i>Log Out</a></li>' : ''; ?>
 					</ul>
 				</div>
 			</div>
@@ -69,6 +71,8 @@
 									</a>
 									<div class="cart-dropdown">
 										<div class="cart-list">
+										<?php if (isset($_SESSION['id_client'])) {
+											echo '
 											<div class="product-widget">
 												<div class="product-img">
 													<img src="./img/product01.png" alt="">
@@ -90,10 +94,22 @@
 												</div>
 												<button class="delete"><i class="fa fa-close"></i></button>
 											</div>
+											';
+										} else {echo '
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="https://static.vecteezy.com/system/resources/previews/023/212/329/original/no-shopping-cart-sign-prohibition-sign-not-a-cart-red-crossed-circle-with-the-silhouette-of-a-shopping-cart-on-wheels-inside-shopping-cart-ban-round-red-stop-cart-sign-vector.jpg" alt="">
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="#">You must login to see your cart</a></h3>
+												</div>
+											</div>
+											'; 
+										} ?>
 										</div>
 										<div class="cart-summary">
-											<small>3 Item(s) selected</small>
-											<h5>SUBTOTAL: $2940.00</h5>
+											<small>X Item(s) selected</small>
+											<h5>SUBTOTAL: $XXXX.XX</h5>
 										</div>
 										<div class="cart-btns">
 											<a href="./cart.php">View Cart</a>
