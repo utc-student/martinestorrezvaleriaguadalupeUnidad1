@@ -56,8 +56,8 @@ class Client {
             $query = $con->prepare("INSERT INTO Client (firstName, lastName, email, password ". ($pNumberClient !== null && $pNumberClient != "" ? ", phoneNumber" : '') .")
             VALUES (:FNAME, :LNAME, :EMAIL, :PSW ". ($pNumberClient !== null && $pNumberClient != "" ? ", :PNUMBER" : '') .")");
             
-            $query->bindParam(':FNAME',$emailClient);
-            $query->bindParam(':LNAME',$emailClient);
+            $query->bindParam(':FNAME',$fNameClient);
+            $query->bindParam(':LNAME',$lNameClient);
             $query->bindParam(':EMAIL',$emailClient);
             $query->bindParam(':PSW',$passwordClient);
 
@@ -69,9 +69,9 @@ class Client {
             $query->execute();
             // Verificar si la inserción se realizó correctamente
             if ($query->rowCount() > 0) {
-                return "Fila creada"; // La fila se insertó correctamente
+                return true; // La fila se insertó correctamente
             } else {
-                return "Fila no creada"; // No se insertó ninguna fila
+                return false; // No se insertó ninguna fila
             } 
         } catch (PDOException $e) {
             echo "Error de conexión a la base de datos: " . $e->getMessage();
