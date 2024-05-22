@@ -1,3 +1,12 @@
+<?php
+require_once "./php/classes/Client.php";
+session_start();
+
+if (!isset($_SESSION['ins_client'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
