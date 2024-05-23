@@ -1,12 +1,3 @@
-<?php
-require_once "./php/classes/Client.php";
-session_start();
-
-if (!isset($_SESSION['ins_client'])) {
-    header('Location: login.php');
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -55,10 +46,10 @@ if (!isset($_SESSION['ins_client'])) {
 				<!-- row -->
 				<div class="row">
 					<div class="col-md-12">
-						<h3 class="breadcrumb-header">My Account</h3>
+						<h3 class="breadcrumb-header">Something went wrong</h3>
 						<ul class="breadcrumb-tree">
-							<li><a href="./">Home</a></li>
-							<li class="active">My Cart</li>
+							<li><a href="/">Home</a></li>
+							<li class="active">Something went wrong</li>
 						</ul>
 					</div>
 				</div>
@@ -73,7 +64,10 @@ if (!isset($_SESSION['ins_client'])) {
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
-				<div class="row">
+				<div class="row center">
+                    <h2>Something went wrong, don't worry, we are working to fix it.</h2>
+                    <a href="./" class="primary-btn order-submit" style="margin-top: 1em; margin-bottom: 1em;">Go to a secure place :D</a>
+                    <img src="https://okdiario.com/img/2018/03/13/como-calcular-porcentaje-de-error.jpg" alt="Imagen de error">
 				</div>
 				<!-- /row -->
 			</div>

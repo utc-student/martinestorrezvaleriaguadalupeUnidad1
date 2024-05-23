@@ -58,7 +58,7 @@ if (!isset($_SESSION['ins_client'])) {
 						<h3 class="breadcrumb-header">My Account</h3>
 						<ul class="breadcrumb-tree">
 							<li><a href="./">Home</a></li>
-							<li class="active">My Account</li>
+							<li class="active">My Wishlist</li>
 						</ul>
 					</div>
 				</div>
