@@ -1,25 +1,34 @@
 
 <?php 
-require_once "./php/classes/Client.php";
+require_once __DIR__ . '/vendor/autoload.php';
+require_once "./php/classes/RestorePassword.php";
 session_start();
 
-
-if (isset($_POST['login'])) {
+if (isset($_POST['restore'])) {
 
     try {
-        $email=$_POST['email'];
-        $password=$_POST['password'];
+		if (isset($_POST['email'])) {
+			$email = $_POST['email'];
+			
+			$sendNewPSW = new RestorePassword();
+			if ($sendNewPSW->verifyEmail($email)) {
+				$sendNewPSW->sendEmailRP($email);
+				echo "<script>alert('Se le enviará un correo con su nueva contraseña en unos minutos.');</script>";
+				$_POST['restore']=null;
+			}else {
+				echo "<script>alert('No se encontro el correo.');</script>";
+				$_POST['restore']=null;
 
-        $cliente = new Client();
+			}
+		} else {
+			echo "<script>alert(No se definio un correo.);</script>";
+			$_POST['restore']=null;
+		}
+		
 
-        if ($cliente->clientExists($email, $password)) {
-            $_SESSION['ins_client'] = $cliente;
-            header("Location:myAccount.php");
-        } else {
-            echo "Error";
-        }
     } catch (\Throwable $th) {
-        echo $th;
+		echo "<script>alert(No se definio un correo.);</script>";
+        // echo $th;
     }    
 }
 ?>
@@ -75,7 +84,7 @@ if (isset($_POST['login'])) {
 						<h3 class="breadcrumb-header">My Account</h3>
 						<ul class="breadcrumb-tree">
 							<li><a href="./">Home</a></li>
-							<li class="active">Login</li>
+							<li class="active">Restore password</li>
 						</ul>
 					</div>
 				</div>
@@ -104,21 +113,17 @@ if (isset($_POST['login'])) {
                                 <!-- Order Details -->
                                 <div class="col-md-5 order-details">
                                     <div class="section-title text-center">
-                                        <h3 class="title">Login to your Account</h3>
+                                        <h3 class="title">Restore your password account</h3>
                                     </div>
                                     <form method="post">
                                         <div style="margin-bottom: 1em;">
                                             <div><strong>Email</strong></div>
-                                            <div><input type="email" name="email" placeholder="Email" class="form-control" style="margin-bottom: 1em;"></div>
-                                            
-                                            <div><strong>Password</strong></div>
-                                            <div><input type="password" name="password" placeholder="Password" class="form-control"></div>
+                                            <div><input required type="email" name="email" placeholder="Email" class="form-control" style="margin-bottom: 1em;"></div>
                                         </div>
                                         <div>
-                                            <p>You don't have an account? <a href="./register.php">Create one</a></p>
-                                            <p>Forgot your password? <a href="./restorePSW.php">Restore it here</a></p>
+                                            <p>If your email is registered, we will send you a new password. We recommend that you change it as soon as you log in.</p>
                                         </div>
-                                        <button type="submit" name="login" class="primary-btn order-submit" style="width: 100%;">Login</button>
+                                        <button type="submit" name="restore" class="primary-btn order-submit" style="width: 100%;">Restore</button>
                                     </form>
                                 </div>
                                 <!-- /Order Details -->
