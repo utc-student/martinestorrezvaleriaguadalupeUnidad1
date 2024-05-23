@@ -13,16 +13,21 @@ if (isset($_POST['restore'])) {
 			$sendNewPSW = new RestorePassword();
 			if ($sendNewPSW->verifyEmail($email)) {
 				$sendNewPSW->sendEmailRP($email);
-				echo "<script>alert('Se le enviará un correo con su nueva contraseña en unos minutos.');</script>";
-				$_POST['restore']=null;
+				echo "<script>
+					alert('Se le enviará un correo con su nueva contraseña en unos minutos.');
+					window.location.href = 'login.php';
+				</script>";
 			}else {
-				echo "<script>alert('No se encontro el correo.');</script>";
-				$_POST['restore']=null;
-
+				echo "<script>
+					alert('No se encontró el correo.');
+					window.location.href = 'restorePSW.php';
+				</script>";
 			}
 		} else {
-			echo "<script>alert(No se definio un correo.);</script>";
-			$_POST['restore']=null;
+			echo "<script>
+				alert('No se definió un correo.');
+				window.location.href = 'restorePSW.php';
+			</script>";
 		}
 		
 
