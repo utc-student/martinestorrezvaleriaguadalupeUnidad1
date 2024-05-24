@@ -36,13 +36,15 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="header-search">
-								<form>
-									<select class="input-select">
+								<form action="store.php" method="get">
+									<select class="input-select" name="cat">
 										<option value="0">All Categories</option>
-										<option value="1">Category 01</option>
-										<option value="1">Category 02</option>
+										<option value="1">Laptops</option>
+										<option value="2">Accesories</option>
+										<option value="3">Cameras</option>
+										<option value="4">Smartphones</option>
 									</select>
-									<input class="input" placeholder="Search here">
+									<input class="input" name="search" placeholder="Search here">
 									<button class="search-btn">Search</button>
 								</form>
 							</div>
