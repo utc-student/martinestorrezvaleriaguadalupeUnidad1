@@ -60,6 +60,15 @@ if (isset($_POST['login'])) {
  		<![endif]-->
 		<script src="//code.tidio.co/va7p5jdpfyfblp3gq2nwdlrehctrttfg.js" async></script>
 
+		<!-- ReCAPTCHA -->
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+		<!-- JQuery Validate library -->
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"> </script>
+
+		<!-- Libreria de sweetalert-->
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     </head>
 	<body>
 		<!-- HEADER AND NAVBAR -->
@@ -74,8 +83,8 @@ if (isset($_POST['login'])) {
 					<div class="col-md-12">
 						<h3 class="breadcrumb-header">My Account</h3>
 						<ul class="breadcrumb-tree">
-							<li><a href="./">Home</a></li>
-							<li class="active">Login</li>
+							<li><a href="./">Inicio</a></li>
+							<li class="active">Ingresar</li>
 						</ul>
 					</div>
 				</div>
@@ -104,21 +113,25 @@ if (isset($_POST['login'])) {
                                 <!-- Order Details -->
                                 <div class="col-md-5 order-details">
                                     <div class="section-title text-center">
-                                        <h3 class="title">Login to your Account</h3>
+                                        <h3 class="title">Acceda a su cuenta</h3>
                                     </div>
-                                    <form method="post">
+                                    <form method="post" id="loginClient" onsubmit="return submitUserForm();">
+									<p>Los campos con un '*', deben ser llenados obligatoriamente.</p>
                                         <div style="margin-bottom: 1em;">
-                                            <div><strong>Email</strong></div>
-                                            <div><input type="email" name="email" placeholder="Email" class="form-control" style="margin-bottom: 1em;"></div>
+                                            <div><strong>Correo Electrónico*</strong></div>
+                                            <div><input type="email" id="email" name="email" placeholder="Correo Electrónico" class="form-control" style="margin-bottom: 1em;"></div>
                                             
-                                            <div><strong>Password</strong></div>
-                                            <div><input type="password" name="password" placeholder="Password" class="form-control"></div>
+                                            <div><strong>Contraseña*</strong></div>
+                                            <div><input type="password" id="password" name="password" placeholder="Contraseña" class="form-control"></div>
+											<br>
+											<div><strong>ReCAPTCHA*</strong></div>
+                                            <div class="g-recaptcha" data-sitekey="6LcGUeYpAAAAADMVnT2WzEMFk334PBzFUH6BMETI" data-callback="verifyCaptcha"></div>
                                         </div>
                                         <div>
-                                            <p>You don't have an account? <a href="./register.php">Create one</a></p>
-                                            <p>Forgot your password? <a href="./restorePSW.php">Restore it here</a></p>
+                                            <p>¿No tienes una cuenta con nosotros? <a href="./register.php">¡Regístrate!</a></p>
                                         </div>
-                                        <button type="submit" name="login" class="primary-btn order-submit" style="width: 100%;">Login</button>
+										<div id="g-recaptcha-error"></div>
+                                        <button type="submit" id="login" name="login" class="primary-btn order-submit" style="width: 100%;">Ingresar</button>
                                     </form>
                                 </div>
                                 <!-- /Order Details -->
@@ -146,5 +159,42 @@ if (isset($_POST['login'])) {
 		<script src="js/jquery.zoom.min.js"></script>
 		<script src="js/main.js"></script>
 
+		<!-- Inicio de código de validaciones jQuery -->
+
+		<script type="text/javascript">
+                $(document).ready(function() {
+                    $("#login").click(function(){
+                        if($("#email").val() == ""){
+                           	swal("Error", "Introduzca su correo electrónico", "error");
+                            return false;
+                        } else if($("#password").val() == ""){
+                            swal("Error", "Introduzca su contraseña", "error");
+                            return false;
+                            
+                        }
+                    });
+                    
+    
+                });
+                </script>
+
+                <!--====  End of Código de Validaciones jQuery  ====-->
+
+				<script>
+					function submitUserForm() {
+						var response = grecaptcha.getResponse();
+						if(response.length == 0) {
+							document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">El campo de reCAPTCHA es requerido.</span>';
+							return false;
+						}
+						return true;
+					}
+					
+					function verifyCaptcha() {
+						document.getElementById('g-recaptcha-error').innerHTML = '';
+					}
+					</script>
+
 	</body>
 </html>
+
