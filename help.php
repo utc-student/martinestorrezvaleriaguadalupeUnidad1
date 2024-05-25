@@ -8,21 +8,18 @@ if (isset($_POST['register'])) {
 
     try {
         $fName=$_POST['fName'];
-        $lName=$_POST['lName'];
         $email=$_POST['email'];
-        $pNumber=$_POST['pNumber'];
-        $password=$_POST['password'];
+        $messageClient=$_POST['messageClient'];
 
         $cliente = new Client();
 
-        if ($cliente->createClient($fName, $lName, $email, $password, $pNumber)) {
+        if ($cliente->insertContactInfo($fName, $email, $messageClient)) {
             echo '<script>
-                alert("Se ha creado su cuenta, inicie sesion");
-                window.location.href = "login.php";
+                alert("Se ha registrado su información, en breve nos comunicaremos con usted.");
             </script>';
             exit;
         } else {
-            echo "Oh no";
+            echo "¡Oh no! Parece que algo ha salido mal, intente de nuevo.";
         } 
     } catch (\Throwable $th) {
         echo $th;
@@ -89,7 +86,7 @@ if (isset($_POST['register'])) {
 						<h3 class="breadcrumb-header">My Account</h3>
 						<ul class="breadcrumb-tree">
 							<li><a href="./">Inicio</a></li>
-							<li class="active">Registrarse</li>
+							<li class="active">Ayuda</li>
 						</ul>
 					</div>
 				</div>
@@ -118,25 +115,19 @@ if (isset($_POST['register'])) {
                                 <!-- Order Details -->
                                 <div class="col-md-5 order-details">
                                     <div class="section-title text-center">
-                                        <h3 class="title">Crear una nueva cuenta</h3>
+                                        <h3 class="title">¡Contáctanos!</h3>
                                     </div>
                                     <form method="post" id="registerClient" onsubmit="return submitUserForm();">
-                                        <p>Los campos con un '*', deben ser llenados obligatoriamente.</p>
+                                        <p>Llena la forma debajo y en breve nos comunicarémos contigo.</p>
                                         <div style="margin-bottom: 1em;">
                                             <div><strong>Nombre*</strong></div>
                                             <div><input type="text" id="fName" required name="fName" placeholder="Nombre" class="form-control" style="margin-bottom: 1em;"></div>
 
-                                            <div><strong>Apellido*</strong></div>
-                                            <div><input type="text" id="lName" required name="lName" placeholder="Apellido" class="form-control" style="margin-bottom: 1em;"></div>
-
                                             <div><strong>Correo Electrónico*</strong></div>
                                             <div><input type="email" id="email" required name="email" placeholder="Correo Electrónico" class="form-control" style="margin-bottom: 1em;"></div>
 
-                                            <div><strong>Teléfono</strong></div>
-                                            <div><input type="text" id="pNumber" name="pNumber" placeholder="Teléfono" class="form-control" style="margin-bottom: 1em;"></div>
-                                            
-                                            <div><strong>Contraseña*</strong></div>
-                                            <div><input type="password" id="password" required name="password" placeholder="Contraseña" class="form-control" style="margin-bottom: 1em;"></div>
+                                            <div><strong>Mensaje</strong></div>
+                                            <div><textarea id="messageClient" required name="messageClient" placeholder="Mensaje" class="form-control" style="margin-bottom: 1em;"></textarea></div>
 
 											<div><strong>ReCAPTCHA*</strong></div>
                                             <div class="g-recaptcha" data-sitekey="6LcGUeYpAAAAADMVnT2WzEMFk334PBzFUH6BMETI" data-callback="verifyCaptcha"></div>
@@ -146,7 +137,7 @@ if (isset($_POST['register'])) {
                                             <p>¿Ya tienes una cuenta con nosotros? <a href="./login.php">¡Accede a tu cuenta!</a></p>
                                         </div>
 										<div id="g-recaptcha-error"></div>
-                                        <button type="submit" id="register" name="register" class="primary-btn order-submit" style="width: 100%;">Registrar</button>
+                                        <button type="submit" id="register" name="register" class="primary-btn order-submit" style="width: 100%;">Enviar</button>
                                     </form>
                                 </div>
                                 <!-- /Order Details -->
@@ -184,27 +175,17 @@ if (isset($_POST['register'])) {
                             swal("Error", "Introduzca su nombre", "error");
                             return false;
 
-                        } else if($("#lName").val() == ""){
-
-                            swal("Error", "Introduzca su apellido", "error");
-                            return false;
-
                         } else if($("#email").val() == ""){
 
                             swal("Error", "Introduzca su correo electrónico", "error");
                             return false;
 
-                        } else if($("#pNumber").val() == ""){
+                        } else if($("#message").val() == null){
                             
-							swal("Error", "Introduzca su número telefónico", "error");
+							swal("Error", "Introduzca su mensaje", "error");
                             return false;
 
-                        } else if($("#password").val() == ""){
-                            
-							swal("Error", "Introduzca su contraseña", "error");
-                            return false;
-
-                        }
+                        } 
                     });
                     
     
