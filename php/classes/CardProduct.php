@@ -10,13 +10,15 @@ class CardProduct {
             if ($search=="" && $category==0) {
                 $query = $con->prepare("SELECT product.id, product.`name`, product.price, category.category 
                 FROM product INNER JOIN category ON product.category = category.id ORDER BY product.date_added ASC");
-            }else {
-                $query = $con->prepare("SELECT product.id, product.`name`, product.price, category.category 
+            } else {
+                $select = "SELECT product.id, product.`name`, product.price, category.category 
                     FROM product INNER JOIN category ON product.category = category.id 
-                    WHERE product.`name` LIKE '%no%' AND product.category = 1 
-                    ORDER BY product.date_added ASC");
-                $query->bindParam(':SEARCH', $search, PDO::PARAM_STR);
-                $query->bindParam(':CAT', $category, PDO::PARAM_INT);
+                    WHERE product.`name` LIKE '%".$search."%' ";
+                $select .= ($category==0) ? "" : "AND product.category = :CAT " ;
+                $select .= "ORDER BY product.date_added ASC";
+                $query = $con->prepare($select);
+                ($category==0) ? false : $query->bindParam(':CAT', $category, PDO::PARAM_INT); ;
+                
             }
 
             $query->execute();

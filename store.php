@@ -1,5 +1,6 @@
 <?php 
 require_once "./php/classes/CardProduct.php";
+
 $cardProducts = new CardProduct;
 ?>
 
@@ -100,13 +101,23 @@ $cardProducts = new CardProduct;
 						<div class="row">
 							
 							<?php 
-								if ($cardProducts->recoverProducts()) {
-									foreach ($cardProducts->recoverProducts() as $prod) {
-										echo $cardProducts->showCardProduct($prod); 
+								if (isset($_GET['search']) || isset($_GET['cat'])) {
+									if ($cardProducts->recoverProducts($_GET['search'], intval($_GET['cat']))) {
+										foreach ($cardProducts->recoverProducts($_GET['search'], intval($_GET['cat'])) as $prod) {
+											echo $cardProducts->showCardProduct($prod); 
+										}
+									} else {
+										echo "<h3>We didn't fount something similar to your search. Try Again.</h3>";
 									}
 								}
 								else {
-									echo "<h3>We didn't find results.</h3>";
+									if ($cardProducts->recoverProducts()) {
+										foreach ($cardProducts->recoverProducts() as $prod) {
+											echo $cardProducts->showCardProduct($prod); 
+										}
+									} else {
+										echo "<h3>We don't have any product at this time. Come back later.</h3>";
+									}
 								}
 							?>
 							
