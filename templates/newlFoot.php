@@ -6,23 +6,23 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="newsletter">
-							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<strong>Buzón <p>¡Déjanos saber tus comentarios!</p></strong>
 							<form>
 								<input class="input" type="email" placeholder="Enter Your Email">
 								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
 							</form>
 							<ul class="newsletter-follow">
 								<li>
-									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="https://www.facebook.com/UniversidadTecnologicadeCoahuila/"><i class="fa fa-facebook"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="https://x.com/utcoahuila"><i class="fa fa-twitter"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="fa fa-instagram"></i></a>
+									<a href="https://www.instagram.com/utcoahuila/"><i class="fa fa-instagram"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
+									<a href="https://www.youtube.com/@UTCOAHUILA"><i class="fa fa-youtube"></i></a>
 								</li>
 							</ul>
 						</div>
@@ -44,12 +44,12 @@
 					<div class="row">
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">About Us</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+								<h3 class="footer-title">Acerca de Nosotros</h3>
+								<p>Somos alumnos del octavo cuatrimestre de la carrera de Ingeniería en Desarrollo y Gestión de Software, del grupo 8IDGSB.</p>
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+									<li><a href="mailto:21045148@alumno.utc.edu.mx"><i class="fa fa-envelope-o"></i>Brian Valles</a></li>
+									<li><a href="mailto:21045109@alumno.utc.edu.mx"><i class="fa fa-envelope-o"></i>Valeria Torres</a></li>
+									<li><a href="mailto:20045098@alumno.utc.edu.mx"><i class="fa fa-envelope-o"></i>Genaro Osoria</a></li>
 								</ul>
 							</div>
 						</div>
@@ -117,7 +117,7 @@
 							</ul>
 							<span class="copyright">
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Conoce más sobre nuestra universidad: <a href="https://utc.edu.mx/" target="_blank">Universiddad Tecnoloógica de Coahuila</a>
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							</span>
 						</div>
