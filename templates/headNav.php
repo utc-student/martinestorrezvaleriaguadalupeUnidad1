@@ -149,9 +149,9 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
+						<li class="active"><a href="index.php">Home</a></li>
 						<li><a href="./#new-products">New Products</a></li>
-						<li><a href="./#top-selling">Categories</a></li>
+						<li><a href="./#top-selling">Top Selling</a></li>
 						<li><a href="./store.php">All Products</a></li>
 					</ul>
 					<!-- /NAV -->

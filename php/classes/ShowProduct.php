@@ -3,7 +3,7 @@ require_once "db_con.php";
 
 class ShowProduct {
     // Atributes
-    protected $idProduct=5;
+    protected $idProduct;
     protected $nameProduct;
     protected $descriptionProduct;
     protected $detailsProduct;
@@ -12,6 +12,18 @@ class ShowProduct {
     protected $numReviews;
     protected $categoryProduct;
     protected $priceProduct;
+
+    /**
+     * Set the value of idProduct
+     *
+     * @return  self
+     */ 
+    public function setIdProduct($idProduct)
+    {
+        $this->idProduct = $idProduct;
+
+        return $this;
+    }
 
     /**
      * Get the value of idProduct
@@ -46,8 +58,7 @@ class ShowProduct {
     /**
      * Get the value of descriptionProduct
      */ 
-    public function getDescriptionProduct()
-    {
+    public function getDescriptionProduct() {
         try {
             $con = new Conexion();
             $stmt = $con->prepare("SELECT product.description AS description FROM product WHERE product.id = :IDPRODUCT;");
@@ -69,8 +80,7 @@ class ShowProduct {
     /**
      * Get the value of detailsProduct
      */ 
-    public function getDetailsProduct()
-    {
+    public function getDetailsProduct() {
         try {
             $con = new Conexion();
             $stmt = $con->prepare("SELECT product.details AS details FROM product WHERE product.id = :IDPRODUCT;");
@@ -152,8 +162,7 @@ class ShowProduct {
     /**
      * Get the value of categoryProduct
      */ 
-    public function getCategoryProduct()
-    {
+    public function getCategoryProduct() {
         return $this->categoryProduct;
     }
 
@@ -179,6 +188,7 @@ class ShowProduct {
             echo "Error: " . $e->getMessage();
         }
     }
+
 }
 
 /* $product = new ShowProduct();

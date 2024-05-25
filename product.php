@@ -1,6 +1,18 @@
 <?php 
 	require_once "./php/classes/ShowProduct.php"; 
-	$producto = new ShowProduct();
+	// $_GET["product"] = 2;
+
+	try {
+		if (isset($_GET["product"])) {
+			$producto = new ShowProduct();
+			$producto->setIdProduct($_GET["product"]);
+		}else {
+			header("Location: error.php");
+		}
+	} catch (\Throwable $th) {
+		//throw $th;
+		header("Location: error.php");
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,11 +64,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="breadcrumb-tree">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">All Categories</a></li>
-							<li><a href="#">Accessories</a></li>
-							<li><a href="#">Headphones</a></li>
-							<li class="active">Product name goes here</li>
+							<li><a href="index.php">Home</a></li>
+							<li><a href="store.php">All Categories</a></li>
+							<li><a href="">Accessories</a></li>
+							<li class="active"><?php echo $producto->getNameProduct(); ?></li>
 						</ul>
 					</div>
 				</div>

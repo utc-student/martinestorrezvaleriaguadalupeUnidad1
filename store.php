@@ -1,3 +1,8 @@
+<?php 
+require_once "./php/classes/CardProduct.php";
+$cardProducts = new CardProduct;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -71,47 +76,16 @@
 							<form action="store.php" method="get">
 								<input class="form-control" name="search" placeholder="Search here">					
 
-								<h3 class="aside-title">Categories</h3>
-								<div class="checkbox-filter">
+								<h3 class="aside-title" style="margin-top: 1em;">Categories</h3>
+								<select class="input-select" name="cat">
+									<option value="0">All Categories</option>
+									<option value="1">Laptops</option>
+									<option value="2">Accesories</option>
+									<option value="3">Cameras</option>
+									<option value="4">Smartphones</option>
+								</select>
 
-									<div class="input-checkbox">
-										<input type="checkbox" id="category-1" name="cat" value="1">
-										<label for="category-1">
-											<span></span>
-											Laptops
-											<!-- <small>(120)</small> -->
-										</label>
-									</div>
-
-									<div class="input-checkbox">
-										<input type="checkbox" id="category-2" name="cat" value="2">
-										<label for="category-2">
-											<span></span>
-											Accesories
-											<!-- <small>(740)</small> -->
-										</label>
-									</div>
-
-									<div class="input-checkbox">
-										<input type="checkbox" id="category-3" name="cat" value="3">
-										<label for="category-3">
-											<span></span>
-											Cameras
-											<!-- <small>(1450)</small> -->
-										</label>
-									</div>
-
-									<div class="input-checkbox">
-										<input type="checkbox" id="category-4" name="cat" value="4">
-										<label for="category-4">
-											<span></span>
-											Smartphones
-											<!-- <small>(578)</small> -->
-										</label>
-									</div>
-								</div>
-
-								<button class="primary-btn order-submit">Search</button>
+								<button class="primary-btn order-submit" style="margin-top: 1em;">Search</button>
 							</form>
 						</div>
 						<!-- /aside Widget -->
@@ -125,74 +99,17 @@
 						<!-- store products -->
 						<div class="row">
 							
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product02.png" alt="">
-										<div class="product-label">
-											<span class="new">NEW</span>
-										</div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-
-							<div class="clearfix visible-sm visible-xs"></div>
-
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product01.png" alt="">
-										<div class="product-label">
-											<span class="sale">-30%</span>
-											<span class="new">NEW</span>
-										</div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
+							<?php 
+								if ($cardProducts->recoverProducts()) {
+									foreach ($cardProducts->recoverProducts() as $prod) {
+										echo $cardProducts->showCardProduct($prod); 
+									}
+								}
+								else {
+									echo "<h3>We didn't find results.</h3>";
+								}
+							?>
+							
 						</div>
 						<!-- /store products -->
 					</div>
