@@ -163,7 +163,24 @@ class ShowProduct {
      * Get the value of categoryProduct
      */ 
     public function getCategoryProduct() {
-        return $this->categoryProduct;
+        try {
+            $con = new Conexion();
+            $stmt = $con->prepare("SELECT category.id, category.category 
+                FROM product INNER JOIN category ON  product.category = category.id
+                WHERE product.id = :IDPRODUCT;");
+            $stmt->bindParam(':IDPRODUCT', $this->idProduct, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) {
+                return $result;
+            } else {
+                throw new Exception("No se encontró el producto con ID: " . $this->idProduct);
+            }
+        } catch (PDOException $e) {
+            echo "Error de conexión a la base de datos: " . $e->getMessage();
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
 
     /**

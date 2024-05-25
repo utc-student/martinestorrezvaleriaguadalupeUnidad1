@@ -6,6 +6,7 @@
 		if (isset($_GET["product"])) {
 			$producto = new ShowProduct();
 			$producto->setIdProduct($_GET["product"]);
+			$category = $producto->getCategoryProduct();
 		}else {
 			header("Location: error.php");
 		}
@@ -66,7 +67,7 @@
 						<ul class="breadcrumb-tree">
 							<li><a href="index.php">Home</a></li>
 							<li><a href="store.php">All Categories</a></li>
-							<li><a href="">Accessories</a></li>
+							<li><a href="store.php?cat=<?php echo $category['id']; ?>"><?php echo $category['category']; ?></a></li>
 							<li class="active"><?php echo $producto->getNameProduct(); ?></li>
 						</ul>
 					</div>
