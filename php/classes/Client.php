@@ -8,6 +8,7 @@ class Client {
     protected $emailClient;
     protected $passwordClient;
     protected $phoneNumberClient;
+    protected $messageClient;
 
     /**
      * Validate if the Client exist.
@@ -67,6 +68,34 @@ class Client {
             }
 
             $query->execute();
+            // Verificar si la inserción se realizó correctamente
+            if ($query->rowCount() > 0) {
+                return true; // La fila se insertó correctamente
+            } else {
+                return false; // No se insertó ninguna fila
+            } 
+        } catch (PDOException $e) {
+            echo "Error de conexión a la base de datos: " . $e->getMessage();
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    // Query para insertar los datos de la forma de contacto que se encuentra en la página help.php
+
+    public function insertContactInfo($fNameClient, $emailClient, $messageClient) {
+        try{
+
+            $con = new Conexion();
+            $query = $con->prepare("INSERT INTO contactclients (firstName, email, messageClient) VALUES (:FNAME, :EMAIL, :MESSAGECLIENT)");
+
+            $query->bindParam(':FNAME',$fNameClient);
+            $query->bindParam(':EMAIL',$emailClient);
+            $query->bindParam(':MESSAGECLIENT',$messageClient);
+
+            // Se ejecuta la query
+            $query->execute();
+
             // Verificar si la inserción se realizó correctamente
             if ($query->rowCount() > 0) {
                 return true; // La fila se insertó correctamente
