@@ -6,10 +6,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="newsletter">
-							<strong>Buzón <p>¡Déjanos saber tus comentarios!</p></strong>
+							<strong>Mail Box <p>Let Us Know Your Thoughts!</p></strong>
 							<form>
 								<input class="input" type="email" placeholder="Enter Your Email">
-								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Send</button>
 							</form>
 							<ul class="newsletter-follow">
 								<li>
@@ -44,8 +44,8 @@
 					<div class="row">
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">Acerca de Nosotros</h3>
-								<p>Somos alumnos del octavo cuatrimestre de la carrera de Ingeniería en Desarrollo y Gestión de Software, del grupo 8IDGSB.</p>
+								<h3 class="footer-title">About Us</h3>
+								<p>We're students from the Universidad Tecnológica de Coahuila, from the Engeenering in Development and Management of Software career. We're from the group 8IDGSB.</p>
 								<ul class="footer-links">
 									<li><a href="mailto:21045148@alumno.utc.edu.mx"><i class="fa fa-envelope-o"></i>Brian Valles</a></li>
 									<li><a href="mailto:21045109@alumno.utc.edu.mx"><i class="fa fa-envelope-o"></i>Valeria Torres</a></li>
@@ -56,14 +56,6 @@
 
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">Categories</h3>
-								<ul class="footer-links">
-									<li><a href="#">Hot deals</a></li>
-									<li><a href="#">Laptops</a></li>
-									<li><a href="#">Smartphones</a></li>
-									<li><a href="#">Cameras</a></li>
-									<li><a href="#">Accessories</a></li>
-								</ul>
 							</div>
 						</div>
 
@@ -71,14 +63,6 @@
 
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">Information</h3>
-								<ul class="footer-links">
-									<li><a href="#">About Us</a></li>
-									<li><a href="#">Contact Us</a></li>
-									<li><a href="#">Privacy Policy</a></li>
-									<li><a href="#">Orders and Returns</a></li>
-									<li><a href="#">Terms & Conditions</a></li>
-								</ul>
 							</div>
 						</div>
 
@@ -86,11 +70,10 @@
 							<div class="footer">
 								<h3 class="footer-title">Service</h3>
 								<ul class="footer-links">
-									<li><a href="#">My Account</a></li>
-									<li><a href="#">View Cart</a></li>
-									<li><a href="#">Wishlist</a></li>
-									<li><a href="#">Track My Order</a></li>
-									<li><a href="#">Help</a></li>
+									<li><a href="myAccount.php">My Account</a></li>
+									<li><a href="cart.php">View Cart</a></li>
+									<li><a href="wishlist.php">Wishlist</a></li>
+									<li><a href="help.php">Help</a></li>
 								</ul>
 							</div>
 						</div>
@@ -108,16 +91,17 @@
 					<div class="row">
 						<div class="col-md-12 text-center">
 							<ul class="footer-payments">
-								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+								<p>We accept the following forms of payment:</p>
+								<li><i class="fa fa-cc-visa"></i></li>
+								<li><i class="fa fa-credit-card"></i></li>
+								<li><i class="fa fa-cc-paypal"></i></li>
+								<li><i class="fa fa-cc-mastercard"></i></li>
+								<li><i class="fa fa-cc-discover"></i></li>
+								<li><i class="fa fa-cc-amex"></i></li>
 							</ul>
 							<span class="copyright">
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Conoce más sobre nuestra universidad: <a href="https://utc.edu.mx/" target="_blank">Universiddad Tecnoloógica de Coahuila</a>
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Get to know our university: <a href="https://utc.edu.mx/" target="_blank">Universidad Tecnoloógica de Coahuila</a>
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							</span>
 						</div>
@@ -129,3 +113,4 @@
 			<!-- /bottom footer -->
 		</footer>
 		<!-- /FOOTER -->
+
