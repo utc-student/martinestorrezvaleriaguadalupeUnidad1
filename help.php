@@ -15,11 +15,11 @@ if (isset($_POST['register'])) {
 
         if ($cliente->insertContactInfo($fName, $email, $messageClient)) {
             echo '<script>
-                alert("Se ha registrado su información, en breve nos comunicaremos con usted.");
+                alert("Your data has been registered. We will get back to you shortly.");
             </script>';
             exit;
         } else {
-            echo "¡Oh no! Parece que algo ha salido mal, intente de nuevo.";
+            echo "Oh no! It seems like something went wrong. Please try again.";
         } 
     } catch (\Throwable $th) {
         echo $th;
@@ -85,8 +85,8 @@ if (isset($_POST['register'])) {
 					<div class="col-md-12">
 						<h3 class="breadcrumb-header">My Account</h3>
 						<ul class="breadcrumb-tree">
-							<li><a href="./">Inicio</a></li>
-							<li class="active">Ayuda</li>
+							<li><a href="./">Home</a></li>
+							<li class="active">Help</li>
 						</ul>
 					</div>
 				</div>
@@ -115,29 +115,31 @@ if (isset($_POST['register'])) {
                                 <!-- Order Details -->
                                 <div class="col-md-5 order-details">
                                     <div class="section-title text-center">
-                                        <h3 class="title">¡Contáctanos!</h3>
+                                        <h3 class="title">Contact Us!</h3>
                                     </div>
                                     <form method="post" id="registerClient" onsubmit="return submitUserForm();">
-                                        <p>Llena la forma debajo y en breve nos comunicarémos contigo.</p>
+                                        <p>Fill the form below and we will contact you at our earliest opportunity.</p>
+										<p>Fields with an '*', must be filled<p>
+										<p</p>
                                         <div style="margin-bottom: 1em;">
-                                            <div><strong>Nombre*</strong></div>
-                                            <div><input type="text" id="fName" required name="fName" placeholder="Nombre" class="form-control" style="margin-bottom: 1em;"></div>
+                                            <div><strong>First Name*</strong></div>
+                                            <div><input type="text" id="fName" required name="fName" placeholder="First Name" class="form-control" style="margin-bottom: 1em;"></div>
 
-                                            <div><strong>Correo Electrónico*</strong></div>
-                                            <div><input type="email" id="email" required name="email" placeholder="Correo Electrónico" class="form-control" style="margin-bottom: 1em;"></div>
+                                            <div><strong>Email*</strong></div>
+                                            <div><input type="email" id="email" required name="email" placeholder="Email" class="form-control" style="margin-bottom: 1em;"></div>
 
-                                            <div><strong>Mensaje</strong></div>
-                                            <div><textarea id="messageClient" required name="messageClient" placeholder="Mensaje" class="form-control" style="margin-bottom: 1em;"></textarea></div>
+                                            <div><strong>Message*</strong></div>
+                                            <div><textarea id="messageClient" required name="messageClient" placeholder="Message" class="form-control" style="margin-bottom: 1em;"></textarea></div>
 
 											<div><strong>ReCAPTCHA*</strong></div>
                                             <div class="g-recaptcha" data-sitekey="6LcGUeYpAAAAADMVnT2WzEMFk334PBzFUH6BMETI" data-callback="verifyCaptcha"></div>
                                         </div>
                                         <div>
                                             
-                                            <p>¿Ya tienes una cuenta con nosotros? <a href="./login.php">¡Accede a tu cuenta!</a></p>
+                                            <p>Already have an account with us? <a href="./login.php">Log in to your account!</a></p>
                                         </div>
 										<div id="g-recaptcha-error"></div>
-                                        <button type="submit" id="register" name="register" class="primary-btn order-submit" style="width: 100%;">Enviar</button>
+                                        <button type="submit" id="register" name="register" class="primary-btn order-submit" style="width: 100%;">Send</button>
                                     </form>
                                 </div>
                                 <!-- /Order Details -->
@@ -172,17 +174,17 @@ if (isset($_POST['register'])) {
                     $("#register").click(function(){
                         if ($("#fName").val() == "") {
     
-                            swal("Error", "Introduzca su nombre", "error");
+                            swal("Error", "Please provide your name", "error");
                             return false;
 
                         } else if($("#email").val() == ""){
 
-                            swal("Error", "Introduzca su correo electrónico", "error");
+                            swal("Error", "Please provide your email", "error");
                             return false;
 
                         } else if($("#message").val() == null){
                             
-							swal("Error", "Introduzca su mensaje", "error");
+							swal("Error", "Please type your message", "error");
                             return false;
 
                         } 
@@ -198,7 +200,7 @@ if (isset($_POST['register'])) {
 					function submitUserForm() {
 						var response = grecaptcha.getResponse();
 						if(response.length == 0) {
-							document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">El campo de reCAPTCHA es requerido.</span>';
+							document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">Please fill out the reCAPTCHA field.</span>';
 							return false;
 						}
 						return true;
