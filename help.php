@@ -16,10 +16,14 @@ if (isset($_POST['register'])) {
         if ($cliente->insertContactInfo($fName, $email, $messageClient)) {
             echo '<script>
                 alert("Your data has been registered. We will get back to you shortly.");
+				window.location.href = "index.php";
             </script>';
             exit;
         } else {
-            echo "Oh no! It seems like something went wrong. Please try again.";
+            echo '<script>
+                alert("Oh no! It seems like something went wrong. Please try again.");
+				window.location.href = "index.php";
+            </script>';
         } 
     } catch (\Throwable $th) {
         echo $th;
@@ -182,7 +186,7 @@ if (isset($_POST['register'])) {
                             swal("Error", "Please provide your email", "error");
                             return false;
 
-                        } else if($("#message").val() == null){
+                        } else if($("#messageClient").val() == null || $("#messageClient").val() == ""){
                             
 							swal("Error", "Please type your message", "error");
                             return false;
