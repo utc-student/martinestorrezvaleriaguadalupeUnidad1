@@ -148,12 +148,14 @@
 				<!-- responsive-nav -->
 				<div id="responsive-nav">
 					<!-- NAV -->
+					<?php $current_page = basename($_SERVER['PHP_SELF']);?>
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="index.php">Home</a></li>
-						<li><a href="register.php">Register</a></li>
-						<li><a href="login.php">Log In</a></li>
-						<li><a href="help.php">Help</a></li>
-						<li><a href="siteMap.php">Site Map</a></li>
+						<li class="<?php echo $current_page == 'index.php' ? 'active' : ''; ?>"><a href="index.php">Home</a></li>
+						<li class="<?php echo $current_page == 'store.php' ? 'active' : ''; ?>"><a href="store.php">Store</a></li>
+						<li class="<?php echo $current_page == 'register.php' ? 'active' : ''; ?>"><a href="register.php">Register</a></li>
+						<li class="<?php echo $current_page == 'login.php' ? 'active' : ''; ?>"><a href="login.php">Log In</a></li>
+						<li class="<?php echo $current_page == 'help.php' ? 'active' : ''; ?>"><a href="help.php">Help</a></li>
+						<li class="<?php echo $current_page == 'siteMap.php' ? 'active' : ''; ?>"><a href="siteMap.php">Site Map</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>
