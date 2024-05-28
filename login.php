@@ -83,8 +83,8 @@ if (isset($_POST['login'])) {
 					<div class="col-md-12">
 						<h3 class="breadcrumb-header">My Account</h3>
 						<ul class="breadcrumb-tree">
-							<li><a href="./">Inicio</a></li>
-							<li class="active">Ingresar</li>
+							<li><a href="./">Home</a></li>
+							<li class="active">Log In</li>
 						</ul>
 					</div>
 				</div>
@@ -113,26 +113,26 @@ if (isset($_POST['login'])) {
                                 <!-- Order Details -->
                                 <div class="col-md-5 order-details">
                                     <div class="section-title text-center">
-                                        <h3 class="title">Acceda a su cuenta</h3>
+                                        <h3 class="title">Log in to your account</h3>
                                     </div>
                                     <form method="post" id="loginClient" onsubmit="return submitUserForm();">
-									<p>Los campos con un '*', deben ser llenados obligatoriamente.</p>
+									<p>Fields with an '*', must be filled.</p>
                                         <div style="margin-bottom: 1em;">
-                                            <div><strong>Correo Electrónico*</strong></div>
-                                            <div><input type="email" id="email" name="email" placeholder="Correo Electrónico" class="form-control" style="margin-bottom: 1em;"></div>
+                                            <div><strong>Email*</strong></div>
+                                            <div><input type="email" id="email" name="email" placeholder="Email" class="form-control" style="margin-bottom: 1em;"></div>
                                             
-                                            <div><strong>Contraseña*</strong></div>
-                                            <div><input type="password" id="password" name="password" placeholder="Contraseña" class="form-control"></div>
+                                            <div><strong>Password*</strong></div>
+                                            <div><input type="password" id="password" name="password" placeholder="Password" class="form-control"></div>
 											<br>
 											<div><strong>ReCAPTCHA*</strong></div>
                                             <div class="g-recaptcha" data-sitekey="6LcGUeYpAAAAADMVnT2WzEMFk334PBzFUH6BMETI" data-callback="verifyCaptcha"></div>
                                         </div>
                                         <div>
-                                            <p>¿No tienes una cuenta con nosotros? <a href="./register.php">¡Regístrate aquí!</a></p>
-                                            <p>¿Olvidaste tu contraseña? <a href="./restorePSW.php">¡Recuperala aquí!</a></p>
+                                            <p>You don't have an account with us? <a href="./register.php">Register in here!</a></p>
+                                            <p>Forgot your password? <a href="./restorePSW.php">Recover it in here!</a></p>
                                         </div>
 										<div id="g-recaptcha-error"></div>
-                                        <button type="submit" id="login" name="login" class="primary-btn order-submit" style="width: 100%;">Ingresar</button>
+                                        <button type="submit" id="login" name="login" class="primary-btn order-submit" style="width: 100%;">Log In</button>
                                     </form>
                                 </div>
                                 <!-- /Order Details -->
@@ -166,10 +166,10 @@ if (isset($_POST['login'])) {
                 $(document).ready(function() {
                     $("#login").click(function(){
                         if($("#email").val() == ""){
-                           	swal("Error", "Introduzca su correo electrónico", "error");
+                           	swal("Error", "Please provide your email", "error");
                             return false;
                         } else if($("#password").val() == ""){
-                            swal("Error", "Introduzca su contraseña", "error");
+                            swal("Error", "Please provide your password", "error");
                             return false;
                             
                         }
@@ -185,7 +185,7 @@ if (isset($_POST['login'])) {
 					function submitUserForm() {
 						var response = grecaptcha.getResponse();
 						if(response.length == 0) {
-							document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">El campo de reCAPTCHA es requerido.</span>';
+							document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">Please fill out the reCAPTCHA field.</span>';
 							return false;
 						}
 						return true;
@@ -198,4 +198,6 @@ if (isset($_POST['login'])) {
 
 	</body>
 </html>
+
+
 
