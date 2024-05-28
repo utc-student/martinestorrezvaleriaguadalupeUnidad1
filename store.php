@@ -107,7 +107,7 @@ $cardProducts = new CardProduct;
 											echo $cardProducts->showCardProduct($prod); 
 										}
 									} else {
-										echo "<h3>We didn't fount something similar to your search. Try Again.</h3>";
+										echo "<h3>We didn't find any references related your search. Please try again.</h3>";
 									}
 								}
 								else {
@@ -116,7 +116,7 @@ $cardProducts = new CardProduct;
 											echo $cardProducts->showCardProduct($prod); 
 										}
 									} else {
-										echo "<h3>We don't have any product at this time. Come back later.</h3>";
+										echo "<h3>We don't have any products at this time. Please come back later.</h3>";
 									}
 								}
 							?>
@@ -145,3 +145,4 @@ $cardProducts = new CardProduct;
 
 	</body>
 </html>
+

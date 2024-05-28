@@ -4,9 +4,9 @@
 			<div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
-						<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-						<li><a href="#"><i class="fa fa-envelope-o"></i> help-electro@gmail.com</a></li>
-						<li><a href="#"><i class="fa fa-map-marker"></i> 25000 Saltillo, Coahuila</a></li>
+						<li><a href="tel:+528442883800"><i class="fa fa-phone"></i> +52 (844) 288-3800</a></li>
+						<li><a href="mailto:escolares@utc.edu.mx"><i class="fa fa-envelope-o"></i> escolares@utc.edu.mx</a></li>
+						<li><a href="https://maps.app.goo.gl/8jwn6CxWFNVe7RrJ9" target="_blank"><i class="fa fa-map-marker"></i> 25900 Ramos Arizpe, Coah.</a></li>
 					</ul>
 					<ul class="header-links pull-right">
 						<li><a href="./myAccount.php"><i class="fa fa-user-o"></i>My Account</a></li>
@@ -26,7 +26,7 @@
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="./" class="logo">
+								<a href="index.php" class="logo">
 									<img src="./img/logo.png" alt="">
 								</a>
 							</div>
@@ -150,9 +150,10 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="index.php">Home</a></li>
-						<li><a href="./#new-products">New Products</a></li>
-						<li><a href="./#top-selling">Top Selling</a></li>
-						<li><a href="./store.php">All Products</a></li>
+						<li><a href="register.php">Register</a></li>
+						<li><a href="login.php">Log In</a></li>
+						<li><a href="help.php">Help</a></li>
+						<li><a href="siteMap.php">Site Map</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>

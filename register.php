@@ -17,7 +17,7 @@ if (isset($_POST['register'])) {
 
         if ($cliente->createClient($fName, $lName, $email, $password, $pNumber)) {
             echo '<script>
-                alert("Se ha creado su cuenta, inicie sesion");
+                alert("Your account has been created, please log in.");
                 window.location.href = "login.php";
             </script>';
             exit;
@@ -88,8 +88,8 @@ if (isset($_POST['register'])) {
 					<div class="col-md-12">
 						<h3 class="breadcrumb-header">My Account</h3>
 						<ul class="breadcrumb-tree">
-							<li><a href="./">Inicio</a></li>
-							<li class="active">Registrarse</li>
+							<li><a href="./">Home</a></li>
+							<li class="active">Register</li>
 						</ul>
 					</div>
 				</div>
@@ -118,35 +118,35 @@ if (isset($_POST['register'])) {
                                 <!-- Order Details -->
                                 <div class="col-md-5 order-details">
                                     <div class="section-title text-center">
-                                        <h3 class="title">Crear una nueva cuenta</h3>
+                                        <h3 class="title">Create a new account</h3>
                                     </div>
                                     <form method="post" id="registerClient" onsubmit="return submitUserForm();">
-                                        <p>Los campos con un '*', deben ser llenados obligatoriamente.</p>
+                                        <p>Fields with an '*', must be filled.</p>
                                         <div style="margin-bottom: 1em;">
-                                            <div><strong>Nombre*</strong></div>
-                                            <div><input type="text" id="fName" required name="fName" placeholder="Nombre" class="form-control" style="margin-bottom: 1em;"></div>
+                                            <div><strong>First Name*</strong></div>
+                                            <div><input type="text" id="fName" required name="fName" placeholder="First Name" class="form-control" style="margin-bottom: 1em;"></div>
 
-                                            <div><strong>Apellido*</strong></div>
-                                            <div><input type="text" id="lName" required name="lName" placeholder="Apellido" class="form-control" style="margin-bottom: 1em;"></div>
+                                            <div><strong>Last Name*</strong></div>
+                                            <div><input type="text" id="lName" required name="lName" placeholder="Last Name" class="form-control" style="margin-bottom: 1em;"></div>
 
-                                            <div><strong>Correo Electrónico*</strong></div>
-                                            <div><input type="email" id="email" required name="email" placeholder="Correo Electrónico" class="form-control" style="margin-bottom: 1em;"></div>
+                                            <div><strong>Email*</strong></div>
+                                            <div><input type="email" id="email" required name="email" placeholder="Email" class="form-control" style="margin-bottom: 1em;"></div>
 
-                                            <div><strong>Teléfono</strong></div>
-                                            <div><input type="text" id="pNumber" name="pNumber" placeholder="Teléfono" class="form-control" style="margin-bottom: 1em;"></div>
+                                            <div><strong>Phone Number</strong></div>
+                                            <div><input type="text" id="pNumber" name="pNumber" placeholder="Phone Number" class="form-control" style="margin-bottom: 1em;"></div>
                                             
-                                            <div><strong>Contraseña*</strong></div>
-                                            <div><input type="password" id="password" required name="password" placeholder="Contraseña" class="form-control" style="margin-bottom: 1em;"></div>
+                                            <div><strong>Password*</strong></div>
+                                            <div><input type="password" id="password" required name="password" placeholder="Password" class="form-control" style="margin-bottom: 1em;"></div>
 
 											<div><strong>ReCAPTCHA*</strong></div>
                                             <div class="g-recaptcha" data-sitekey="6LcGUeYpAAAAADMVnT2WzEMFk334PBzFUH6BMETI" data-callback="verifyCaptcha"></div>
                                         </div>
                                         <div>
                                             
-                                            <p>¿Ya tienes una cuenta con nosotros? <a href="./login.php">¡Accede a tu cuenta!</a></p>
+                                            <p>Already have an account with us? <a href="./login.php">Log in to your account!</a></p>
                                         </div>
 										<div id="g-recaptcha-error"></div>
-                                        <button type="submit" id="register" name="register" class="primary-btn order-submit" style="width: 100%;">Registrar</button>
+                                        <button type="submit" id="register" name="register" class="primary-btn order-submit" style="width: 100%;">Register</button>
                                     </form>
                                 </div>
                                 <!-- /Order Details -->
@@ -181,27 +181,27 @@ if (isset($_POST['register'])) {
                     $("#register").click(function(){
                         if ($("#fName").val() == "") {
     
-                            swal("Error", "Introduzca su nombre", "error");
+                            swal("Error", "Plese provide your first name", "error");
                             return false;
 
                         } else if($("#lName").val() == ""){
 
-                            swal("Error", "Introduzca su apellido", "error");
+                            swal("Error", "Please provide your last name", "error");
                             return false;
 
                         } else if($("#email").val() == ""){
 
-                            swal("Error", "Introduzca su correo electrónico", "error");
+                            swal("Error", "Please provide your email", "error");
                             return false;
 
                         } else if($("#pNumber").val() == ""){
                             
-							swal("Error", "Introduzca su número telefónico", "error");
+							swal("Error", "Please provide your phone number", "error");
                             return false;
 
                         } else if($("#password").val() == ""){
                             
-							swal("Error", "Introduzca su contraseña", "error");
+							swal("Error", "Please provide a password", "error");
                             return false;
 
                         }
@@ -217,7 +217,7 @@ if (isset($_POST['register'])) {
 					function submitUserForm() {
 						var response = grecaptcha.getResponse();
 						if(response.length == 0) {
-							document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">El campo de reCAPTCHA es requerido.</span>';
+							document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">Please fill out the reCAPTCHA field.</span>';
 							return false;
 						}
 						return true;

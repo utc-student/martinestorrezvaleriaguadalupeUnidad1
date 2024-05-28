@@ -14,25 +14,25 @@ if (isset($_POST['restore'])) {
 			if ($sendNewPSW->verifyEmail($email)) {
 				$sendNewPSW->sendEmailRP($email);
 				echo "<script>
-					alert('Se le enviará un correo con su nueva contraseña en unos minutos.');
+					alert('An email with your new password should be arriving soon.');
 					window.location.href = 'login.php';
 				</script>";
 			}else {
 				echo "<script>
-					alert('No se encontró el correo.');
+					alert('We didn't find the email on our database, please try again.');
 					window.location.href = 'restorePSW.php';
 				</script>";
 			}
 		} else {
 			echo "<script>
-				alert('No se definió un correo.');
+				alert('There was no email specified.');
 				window.location.href = 'restorePSW.php';
 			</script>";
 		}
 		
 
     } catch (\Throwable $th) {
-		echo "<script>alert(No se definio un correo.);</script>";
+		echo "<script>alert(There was no email specified.);</script>";
         // echo $th;
     }    
 }
@@ -89,7 +89,7 @@ if (isset($_POST['restore'])) {
 						<h3 class="breadcrumb-header">My Account</h3>
 						<ul class="breadcrumb-tree">
 							<li><a href="./">Home</a></li>
-							<li class="active">Restore password</li>
+							<li class="active">Restore Password</li>
 						</ul>
 					</div>
 				</div>
@@ -118,15 +118,16 @@ if (isset($_POST['restore'])) {
                                 <!-- Order Details -->
                                 <div class="col-md-5 order-details">
                                     <div class="section-title text-center">
-                                        <h3 class="title">Restore your password account</h3>
+                                        <h3 class="title">Restore the password for your account</h3>
                                     </div>
                                     <form method="post">
+									<p>Fields with an '*', must be filled.</p>
                                         <div style="margin-bottom: 1em;">
-                                            <div><strong>Email</strong></div>
+                                            <div><strong>Email*</strong></div>
                                             <div><input required type="email" name="email" placeholder="Email" class="form-control" style="margin-bottom: 1em;"></div>
                                         </div>
                                         <div>
-                                            <p>If your email is registered, we will send you a new password. We recommend that you change it as soon as you log in.</p>
+                                            <p>If your email is registered, we will send you a new password. We recommend changing the password as soon as you log in.</p>
                                         </div>
                                         <button type="submit" name="restore" class="primary-btn order-submit" style="width: 100%;">Restore</button>
                                     </form>
@@ -158,3 +159,4 @@ if (isset($_POST['restore'])) {
 
 	</body>
 </html>
+
