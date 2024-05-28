@@ -128,7 +128,8 @@ if (isset($_POST['login'])) {
                                             <div class="g-recaptcha" data-sitekey="6LcGUeYpAAAAADMVnT2WzEMFk334PBzFUH6BMETI" data-callback="verifyCaptcha"></div>
                                         </div>
                                         <div>
-                                            <p>¿No tienes una cuenta con nosotros? <a href="./register.php">¡Regístrate!</a></p>
+                                            <p>¿No tienes una cuenta con nosotros? <a href="./register.php">¡Regístrate aquí!</a></p>
+                                            <p>¿Olvidaste tu contraseña? <a href="./restorePSW.php">¡Recuperala aquí!</a></p>
                                         </div>
 										<div id="g-recaptcha-error"></div>
                                         <button type="submit" id="login" name="login" class="primary-btn order-submit" style="width: 100%;">Ingresar</button>
